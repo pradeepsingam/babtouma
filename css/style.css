@@ -5507,7 +5507,8 @@ footer .bottom_footer .social_media li a:hover {
 
 .fact-counter {
   position: relative;
-  padding-top: 50px;
+  padding-top: 0px;
+  text-align: center;
 }
 
 .fact-counter .fact-block .inner .fact-count {
