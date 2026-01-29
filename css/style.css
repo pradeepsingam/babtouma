@@ -234,6 +234,10 @@
   padding:20px 0px;
 }
 
+.fixed-header .main-box .logo-box .logo img{
+  height: 50px;
+}
+
 .fixed-header .main-menu .navigation > li{
   padding:10px 0px;
 }
