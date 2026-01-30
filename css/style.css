@@ -905,7 +905,7 @@ body.visible-sidebar{
 
 .hidden-bar .inner-box .logo-box img{
   position:relative;
-  max-height: 50px;
+  max-height: 150px;
 }
 
 .hidden-bar h5{
