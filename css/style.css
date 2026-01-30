@@ -257,6 +257,7 @@
 
 .main-header .main-box .logo-box .logo img{
   position: relative;
+  margin-top: -15px;
   display: block;
   height: 80px;
   z-index: 1;
