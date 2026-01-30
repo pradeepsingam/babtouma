@@ -264,8 +264,7 @@
                          <!--Block-->
                         <div class="dish-block">
                             <div class="inner-box">
-                                <div class="title clearfix"><div class="ttl clearfix"><h6><a href="#">Za’atar <span class="s-info">G,SE</span></a></h6></div> <span class="menu-list-line"> </span><div class="price"><span>kr. 105,-</span></div></div>
-                                <div class="text desc"><a href="#">Timian, sesam og olivenolje.</a></div>
+                                <div class="title clearfix"><div class="ttl clearfix"><h6><a href="#">Za’atar <span class="s-info">G,SE</span></a></h6></div> <span class="menu-list-line"> </span><div class="price"><span>kr. 105,-</span></div></div>                               <div class="text desc"><a href="#">Timian, sesam og olivenolje.</a></div>
                             </div>
                         </div>
 
@@ -794,6 +793,68 @@
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-up"></span></div>
 <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
 
+<!-- Allergen Tooltip Styles -->
+<style>
+.s-info {
+    position: relative;
+    cursor: help;
+    text-decoration: underline dotted;
+}
+
+.s-info::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #F3CD68;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    width: 220px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    border: 1px solid #F3CD68;
+    pointer-events: none;
+    font-weight: 500;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+.s-info::before {
+    content: '';
+    position: absolute;
+    bottom: 115%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #333;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.s-info:hover::after,
+.s-info:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 768px) {
+    .s-info::after {
+        width: 200px;
+        font-size: 11px;
+        padding: 10px 12px;
+    }
+}
+</style>
+
 <!-- GDPR Consent Banner -->
 <style>
 .gdpr-consent-banner {
@@ -965,5 +1026,43 @@ window.addEventListener('load', function() {
 <script src="js/appear.js"></script>
 <script src="js/wow.js"></script>
 <script src="js/custom-script.js"></script>
-</body>
-</html>
+
+<!-- Allergen Tooltip Script -->
+<script>
+// Allergen meanings dictionary
+const allergenDict = {
+    'G': 'Gluten / Hvete',
+    'M': 'Melk / Laktose',
+    'N': 'Nøtter',
+    'SE': 'Sesam',
+    'E': 'Egg',
+    'F': 'Fisk',
+    'SU': 'Soya',
+    'SK': 'Skalldyr',
+    'L': 'Lam',
+    'K': 'Kylling',
+    'S': 'Storfe'
+};
+
+// Initialize tooltips on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const sInfoElements = document.querySelectorAll('.s-info');
+    
+    sInfoElements.forEach(element => {
+        const allergenCodes = element.textContent.trim().split(',');
+        const tooltip = allergenCodes
+            .map(code => {
+                const trimmed = code.trim();
+                return allergenDict[trimmed] ? trimmed + ' = ' + allergenDict[trimmed] : '';
+            })
+            .filter(line => line !== '')
+            .join('\n');
+        
+        // Set the tooltip using a data attribute and CSS content
+        element.setAttribute('data-tooltip', tooltip);
+        element.style.setProperty('--tooltip-content', '"' + tooltip.replace(/\n/g, '\\A') + '"');
+    });
+});
+</script>
+
+
