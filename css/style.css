@@ -5817,12 +5817,12 @@ footer .bottom_footer .social_media li a:hover {
 
 .menu-one .image-col .vertical-title{
   position: absolute;
-  top: 103%;
+  top: 110%;
   left: 30px;
   transform: translateY(-50%) rotate(-90deg);
   transform-origin: left center;
 
-  font-size: 130px;
+  font-size: 100px;
   text-transform: uppercase;
   color: var(--main-color);
   font-family: var(--font-family-Fraunces);
