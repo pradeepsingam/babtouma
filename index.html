@@ -728,14 +728,14 @@
     }
 
     .sticky-menu-btn:hover {
-        transform: translateY(-8px) scale(1.1);
+        transform: scale(1.25);
         box-shadow: 0 15px 40px rgba(196, 30, 30, 0.7), 0 0 30px rgba(196, 30, 30, 0.5);
         background: linear-gradient(135deg, #d42f2f 0%, #a01f1f 100%);
         border-color: rgba(255, 255, 255, 0.4);
     }
 
     .sticky-menu-btn:active {
-        transform: translateY(-2px) scale(0.98);
+        transform: scale(1.08);
     }
 
     .sticky-menu-btn i {
@@ -750,18 +750,12 @@
 
     @keyframes bounce-btn {
         0%, 100% {
-            transform: translateY(0) scale(1);
+            transform: scale(1);
             box-shadow: 0 8px 20px rgba(196, 30, 30, 0.4);
         }
-        25% {
-            transform: translateY(-10px) scale(1.05);
-        }
         50% {
-            transform: translateY(0) scale(1);
+            transform: scale(1.15);
             box-shadow: 0 8px 35px rgba(196, 30, 30, 0.8);
-        }
-        75% {
-            transform: translateY(-5px) scale(1.02);
         }
     }
 
