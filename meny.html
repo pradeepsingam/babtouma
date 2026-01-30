@@ -531,6 +531,167 @@
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-up"></span></div>
 <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
 
+<!-- GDPR Consent Banner -->
+<style>
+.gdpr-consent-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+    border-top: 4px solid #F3CD68;
+    padding: 20px;
+    z-index: 998;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.gdpr-consent-content {
+    flex: 1;
+}
+
+.gdpr-consent-content h3 {
+    color: #F3CD68;
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.gdpr-consent-content p {
+    color: #ccc;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.gdpr-consent-content a {
+    color: #F3CD68;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.gdpr-consent-content a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.gdpr-consent-actions {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.gdpr-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.gdpr-btn-accept {
+    background: linear-gradient(135deg, #F3CD68 0%, #e0b844 100%);
+    color: #333;
+}
+
+.gdpr-btn-accept:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(243, 205, 104, 0.4);
+}
+
+.gdpr-btn-reject {
+    background: rgba(255, 255, 255, 0.15);
+    color: #F3CD68;
+    border: 1px solid #F3CD68;
+}
+
+.gdpr-btn-reject:hover {
+    background: rgba(243, 205, 104, 0.15);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .gdpr-consent-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 12px;
+        gap: 10px;
+    }
+
+    .gdpr-consent-content h3 {
+        font-size: 14px;
+        margin: 0 0 4px 0;
+    }
+
+    .gdpr-consent-content p {
+        font-size: 12px;
+        margin: 0;
+    }
+
+    .gdpr-consent-actions {
+        width: 100%;
+    }
+
+    .gdpr-btn {
+        flex: 1;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
+</style>
+
+<div id="gdprConsent" class="gdpr-consent-banner">
+    <div class="gdpr-consent-content">
+        <h3>🍪 Informasjon om Cookies</h3>
+        <p>Vi bruker cookies for å forbedre din opplevelse på nettstedet. Ved å klikke "Godta", samtykker du til bruk av alle cookies.</p>
+    </div>
+    <div class="gdpr-consent-actions">
+        <button class="gdpr-btn gdpr-btn-reject" onclick="rejectGDPR()">Avvis</button>
+        <button class="gdpr-btn gdpr-btn-accept" onclick="acceptGDPR()">Godta</button>
+    </div>
+</div>
+
+<script>
+// GDPR Consent Management
+function acceptGDPR() {
+    localStorage.setItem('gdprConsent', 'accepted');
+    document.getElementById('gdprConsent').style.display = 'none';
+    // Add your tracking code here
+}
+
+function rejectGDPR() {
+    localStorage.setItem('gdprConsent', 'rejected');
+    document.getElementById('gdprConsent').style.display = 'none';
+}
+
+// Check if user has already made a choice
+window.addEventListener('load', function() {
+    var gdprConsent = localStorage.getItem('gdprConsent');
+    if (gdprConsent) {
+        document.getElementById('gdprConsent').style.display = 'none';
+    }
+});
+</script>
+
 <script src="js/jquery.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
