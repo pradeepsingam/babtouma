@@ -1283,9 +1283,9 @@ body.visible-sidebar{
   margin-bottom: 10px;
 }
 
-.info-bar .info li:last-child{
+/* .info-bar .info li:last-child{
   margin-top: 30px;
-}
+} */
 
 .info-bar .info li a{
   color: var(--white-color);
