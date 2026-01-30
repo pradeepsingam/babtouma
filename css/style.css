@@ -5800,12 +5800,12 @@ footer .bottom_footer .social_media li a:hover {
 
 .menu-one.alternate .image-col .vertical-title{
   position: absolute;
-  top: auto;
+  top: 0%;
   right: 30px;
   transform: translateY(-50%) rotate(-90deg);
   transform-origin: right center;
 
-  font-size: 130px;
+  font-size: 100px;
   text-transform: uppercase;
   color: var(--main-color);
   font-family: var(--font-family-Fraunces);
